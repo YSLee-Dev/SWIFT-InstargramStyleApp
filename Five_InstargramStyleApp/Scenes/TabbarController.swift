@@ -27,6 +27,6 @@ class TabbarController : UITabBarController{
 
 private extension TabbarController{
     func tabbarSet(){
-        self.viewControllers = [UINavigationController(rootViewController: self.mainVC), self.profileVC]
+        self.viewControllers = [UINavigationController(rootViewController: self.mainVC), UINavigationController(rootViewController: self.profileVC)]
     }
 }
