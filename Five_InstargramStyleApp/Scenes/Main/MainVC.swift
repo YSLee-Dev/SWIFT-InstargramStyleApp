@@ -9,9 +9,10 @@ import UIKit
 
 import SnapKit
 import Then
+import PhotosUI
 
 class MainVC: UIViewController {
-
+    
     lazy var plusBtn = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .done, target: self, action: #selector(plusBtnClick(_ :)))
     
     lazy var tableView = UITableView().then{
@@ -21,13 +22,43 @@ class MainVC: UIViewController {
         $0.dataSource = self
     }
     
+    lazy var picker : PHPickerViewController = {
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        config.selectionLimit = 1
+        
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+        
+        return picker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSet()
     }
-    
-    @objc private func plusBtnClick(_ sender:Any){
-        print("눌림")
+}
+
+extension MainVC : PHPickerViewControllerDelegate{
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        self.dismiss(animated: true)
+        
+        if !results.isEmpty{
+            let img = results[0].itemProvider
+            if img.canLoadObject(ofClass: UIImage.self){
+                img.loadObject(ofClass: UIImage.self){[weak self] loadImg ,_ in
+                    DispatchQueue.main.async {
+                        let vc = UINavigationController(rootViewController: UploadVC(image: loadImg as? UIImage))
+                        vc.modalPresentationStyle = .fullScreen
+                        self?.present(vc, animated: true)
+                    }
+                }
+            }else{
+                let alert = UIAlertController(title: "오류", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .destructive))
+                self.present(alert, animated: true)
+            }
+        }
     }
 }
 
@@ -41,7 +72,6 @@ extension MainVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
-    
 }
 
 private extension MainVC {
@@ -53,5 +83,10 @@ private extension MainVC {
         self.tableView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
+    }
+    
+    @objc
+    private func plusBtnClick(_ sender:Any){
+        self.present(self.picker, animated: true)
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D414B03328D9C20F002FAEA2 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D414B03228D9C20F002FAEA2 /* UploadVC.swift */; };
+		D4B09AD328D9B98A00F0BAE2 /* ContentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B09AD228D9B98A00F0BAE2 /* ContentsCell.swift */; };
 		D4B2C3E328C742FB005C3E70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2C3E228C742FB005C3E70 /* AppDelegate.swift */; };
 		D4B2C3E528C742FB005C3E70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2C3E428C742FB005C3E70 /* SceneDelegate.swift */; };
 		D4B2C3E728C742FB005C3E70 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2C3E628C742FB005C3E70 /* MainVC.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D414B03228D9C20F002FAEA2 /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
+		D4B09AD228D9B98A00F0BAE2 /* ContentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsCell.swift; sourceTree = "<group>"; };
 		D4B2C3DF28C742FB005C3E70 /* Five_InstargramStyleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Five_InstargramStyleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4B2C3E228C742FB005C3E70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4B2C3E428C742FB005C3E70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D4B2C3E628C742FB005C3E70 /* MainVC.swift */,
+				D414B03228D9C20F002FAEA2 /* UploadVC.swift */,
 				D4B2C40128C748F9005C3E70 /* MainTableViewCell.swift */,
 			);
 			path = Main;
@@ -105,6 +110,7 @@
 			children = (
 				D4B6DC0328D8694600187B00 /* ContentsHeader.swift */,
 				D4B2C3FF28C74600005C3E70 /* ProfileVC.swift */,
+				D4B09AD228D9B98A00F0BAE2 /* ContentsCell.swift */,
 				D4B6DC0628D86FFD00187B00 /* ContentsDataView.swift */,
 			);
 			path = Profile;
@@ -189,8 +195,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B2C40028C74600005C3E70 /* ProfileVC.swift in Sources */,
+				D4B09AD328D9B98A00F0BAE2 /* ContentsCell.swift in Sources */,
 				D4B6DC0728D86FFD00187B00 /* ContentsDataView.swift in Sources */,
 				D4B2C3E728C742FB005C3E70 /* MainVC.swift in Sources */,
+				D414B03328D9C20F002FAEA2 /* UploadVC.swift in Sources */,
 				D4B2C3FD28C74512005C3E70 /* TabbarController.swift in Sources */,
 				D4B2C40428C75407005C3E70 /* CustomBtn.swift in Sources */,
 				D4B2C3E328C742FB005C3E70 /* AppDelegate.swift in Sources */,

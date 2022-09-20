@@ -12,11 +12,11 @@ import Then
 
 class ProfileVC : UIViewController{
     
-    lazy var moreBtn = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: self, action: nil)
+    lazy var moreBtn = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .done, target: self, action: #selector(moreBtnClick))
     
     lazy var colletionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         $0.register(ContentsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ContentsHeader")
-        $0.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ProfileCell")
+        $0.register(ContentsCell.self, forCellWithReuseIdentifier: "ProfileCell")
         $0.backgroundColor = .systemBackground
         $0.dataSource = self
     }
@@ -24,6 +24,16 @@ class ProfileVC : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSet()
+    }
+    
+    @objc
+    private func moreBtnClick(){
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "회원 정보 변경", style: .default))
+        alert.addAction(UIAlertAction(title: "탈퇴하기", style: .destructive))
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel))
+        
+        self.present(alert, animated: true)
     }
 }
 
@@ -33,8 +43,7 @@ extension ProfileVC : UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as? ContentsCell else {return UICollectionViewCell()}
         return cell
     }
     
