@@ -14,7 +14,7 @@ class UploadVC : UIViewController{
     var image : UIImage?
     
     lazy var cancelBtn = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(cancelBtnClick))
-    lazy var okBtn = UIBarButtonItem(title: "공유", style: .done, target: self, action: nil)
+    lazy var okBtn = UIBarButtonItem(title: "공유", style: .done, target: self, action: #selector(okBtnClick))
     
     lazy var imageView = UIImageView().then{
         $0.image = self.image
@@ -80,5 +80,13 @@ private extension UploadVC {
     @objc
     private func cancelBtnClick(){
         self.dismiss(animated: true)
+    }
+    
+    @objc
+    private func okBtnClick(){
+        let alert = UIAlertController(title: "공유하시겠습니까?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        alert.addAction(UIAlertAction(title: "취소", style: .default))
+        self.present(alert, animated: true)
     }
 }
